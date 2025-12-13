@@ -115,22 +115,27 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        minutes=int(os.getenv("ACCESS_TOKEN_MINUTES", 30))
+    ),
+    "REFRESH_TOKEN_LIFETIME": timedelta(
+        days=int(os.getenv("REFRESH_TOKEN_DAYS", 7))
+    ),
 }
+
 
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = os.getenv("LANGUAGE_CODE", "en-us")
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = os.getenv("USE_TZ", "True") == "True"
 
 
 # Static files (CSS, JavaScript, Images)
