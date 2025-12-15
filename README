@@ -34,7 +34,7 @@ git clone <repo-url>
 cd django-app
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements/requirements.txt
 python manage.py migrate
 python manage.py runserver
 
@@ -49,7 +49,7 @@ DJANGO-APP/
 │
 ├── apps/
 │   │
-│   ├── students/
+│   ├── accounts/
 │   │   ├── migrations/
 │   │   ├── models/
 │   │   ├── serializers/
@@ -59,23 +59,20 @@ DJANGO-APP/
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   └── tests.py
-│   │
-│   ├── teachers/
-│   │   ├── migrations/
-│   │   ├── models/
-│   │   ├── services/
-│   │   ├── views/
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   └── tests.py
 │
 ├── config/
 │   ├── __init__.py
 │   ├── asgi.py
-│   ├── settings.py
+│   ├── settings/
+│   │   ├── base.py
+│   │   ├── database.py
+│   │   ├── local.py
+│   │   ├── logging.py
+│   │   ├── production.py
+│   │   ├── rest_framework.py
 │   ├── urls.py
 │   └── wsgi.py
-
+│  
 ├── core/
 │   ├── helpers/
 │   ├── services/
