@@ -19,7 +19,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     role = models.ForeignKey(
         "accounts.Role",
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        null=True
     )
 
     is_active = models.BooleanField(default=True)

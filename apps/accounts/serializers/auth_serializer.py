@@ -3,7 +3,7 @@ from ..models.user import User
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    username = serializers.EmailField(required=True)
+    username = serializers.CharField(required=True)
     email = serializers.EmailField(required=True)
     password = serializers.CharField(write_only=True, required=True)
     phone = serializers.CharField(write_only=True)
