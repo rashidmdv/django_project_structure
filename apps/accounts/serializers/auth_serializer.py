@@ -3,8 +3,10 @@ from ..models.user import User
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    username = serializers.EmailField(required=True)
     email = serializers.EmailField(required=True)
     password = serializers.CharField(write_only=True, required=True)
+    phone = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
@@ -22,13 +24,15 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Email already exists")
         return value
 
-    # def create(self, validated_data):
-    #     password = validated_data.pop("password")
-    #     user = User.objects.create_user(
-    #         password=password,
-    #         **validated_data
-    #     )
-    #     return user
+    def validate_phone(self, value):
+        if User.objects.filter(phone=value).exists():
+            raise serializers.ValidationError("Mobile Number already exists")
+        return value
+
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError("User Name already exists")
+        return value
 
 
 
