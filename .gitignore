@@ -11,7 +11,10 @@ env/
 db.sqlite3
 
 # Django logs
+logs/
 *.log
+*.log.*
+
 
 # VSCode / IDE
 .vscode/

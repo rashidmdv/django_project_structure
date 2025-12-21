@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from .user_manager import UserManager
+from .user_manager import UserManager, RoleManager
 
 
 class Role(models.Model):
     name = models.CharField(max_length=100, unique=True)
     is_active = models.BooleanField(default=True)
+
+    objects = RoleManager()
 
     def __str__(self):
         return self.name
@@ -20,7 +22,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     role = models.ForeignKey(
         "accounts.Role",
         on_delete=models.PROTECT,
-        null=True
+        null=True,
+        blank=True
     )
 
     is_active = models.BooleanField(default=True)

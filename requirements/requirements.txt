@@ -31,3 +31,5 @@ gunicorn==20.1.0
 
 # Error Tracking
 sentry-sdk==1.29.2
+
+drf-yasg==1.21.7
